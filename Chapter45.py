@@ -96,8 +96,10 @@ class CrashSite(Scene):
             return'death'
 
         else:
-            print("     You stand their in misbelief. Eventually the Unicorn rises up     ")
-            print(" A bright beam of light rains from its horn before you can even react. ")
+            print(" --------------------------------------------------------------------  ")
+            print("|    You stand their in misbelief. Eventually the Unicorn rises up    |")
+            print("|A bright beam of light rains from its horn before you can even react.|")
+            print("|_____________________________________________________________________|")
             return'CrashSite'
 
 
