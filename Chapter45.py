@@ -2,12 +2,12 @@
 ## You will be put through multiple rooms and problems that will change how you proceed
 ## Your goal is to get off this planet and find your way back to Earth
 ## Welcome to Ethereal
-from sys import exit ; from random import randint
+from sys import exit ; from random import randint ; import Death
 
 class Scene(object):
 
     def enter(self):
-        exit(0)
+        exit(1)
 
 class Engine(object):
 
@@ -21,18 +21,6 @@ class Engine(object):
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
             current_scene = self.scene_map.next_scene(next_scene_name)
-
-class Death(Scene):
-
-    pain = [
-    "You have died. Better luck next time!",
-    "What are you doing man? Try again!",
-    "Better luck next time!"
-    ]
-
-    def enter(self):
-        print(Death.pain[randint(0, len(self.pain)-1)])
-        exit(1)
 
 class CrashSite(Scene):
 
@@ -66,7 +54,7 @@ class CrashSite(Scene):
             print("|     You load the gun point it at the unicorn and 'click'    |")
             print("|                     The gun is jammed!                      |")
             print("|_____________________________________________________________|")
-            return 'death'
+            return Death.Death()
 
         elif action == "2":
             print(" ------------------------------------------------------------  ")
@@ -93,7 +81,7 @@ class CrashSite(Scene):
             print("|    Before you can even move you relize you made a mistake   |")
             print("|    You look down and see a massive hole through your chest  |")
             print("|_____________________________________________________________|")
-            return'death'
+            return Death.Death()
 
         else:
             print(" --------------------------------------------------------------------  ")
@@ -144,7 +132,7 @@ class HoldingChamber(Scene):
             print("|   You hear footsteps coming from outside the chamber door   |")
             print("|         The door slowely creeps open. welcome my son!       |")
             print("|_____________________________________________________________|")
-            return 'death'
+            return Death.Death()
 
 class Map(object):
 
@@ -152,7 +140,6 @@ class Map(object):
         'CrashSite': CrashSite(),
         'HoldingChamber': HoldingChamber(),
         'ShipRemains': ShipRemains(),
-        'death': Death(),
         'finished': Finished(),
     }
 
