@@ -114,23 +114,35 @@ class ShipRemains(Scene):
 
         if action == "1":
             print(" ------------------------------------------------------------  ")
-            print("| You run back and pick up the survivor and begin to run back.|")
-            print("||")
+            print("|            You run back and pick up the survivor.           |")
+            print("|    As your picking up the survivor a ray of light appears   |")
+            print("|   You can't see anything because the light is blinding you  |")
             print("|_____________________________________________________________|")
+            return 'HoldingChamber'
+
+        else:
+            print(" ------------------------------------------------------------  ")
+            print("|           You get back to the EscapePod and hop in.         |")
+            print("|    You power on the pod and mark your location for earth    |")
+            print("|                  TO INFINITY AND BEYOUND!                   |")
+            print("|_____________________________________________________________|")
+            return 'finished'
+
 class Finished(Scene):
 
     def enter(self):
-        print("CONGRADULATIONS")
+        print("!!!CONGRADULATIONS!!!")
 
 class HoldingChamber(Scene):
 
     def enter(self):
-        pass
-
-class EscapePod(Scene):
-
-    def enter(self):
-        pass
+        if action == "1":
+            print(" ------------------------------------------------------------  ")
+            print("|           You wake up in a small and muggy chamber.         |")
+            print("|   You hear footsteps coming from outside the chamber door   |")
+            print("|         The door slowely creeps open. welcome my son!       |")
+            print("|_____________________________________________________________|")
+            return 'death'
 
 class Map(object):
 
@@ -138,7 +150,6 @@ class Map(object):
         'CrashSite': CrashSite(),
         'HoldingChamber': HoldingChamber(),
         'ShipRemains': ShipRemains(),
-        'EscapePod': EscapePod(),
         'death': Death(),
         'finished': Finished(),
     }
